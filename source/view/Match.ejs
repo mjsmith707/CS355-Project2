@@ -1,0 +1,470 @@
+<% include header %>
+<script src="/createcommentform.js"></script>
+<%
+    var p1altmod;
+    var p1imgmod;
+    var p1elochange;
+    var p1colormod;
+    var p2altmod;
+    var p2imgmod;
+    var p2elochange;
+    var p2colormod;
+
+    if (+match[0][0].P1Score > +match[0][0].P2Score) {
+        p1altmod = 'Won';
+        p1imgmod = 'uparrow.png';
+        p1elochange = '+' + match[0][0].P1EloChange;
+        p1colormod = 'green';
+        p2altmod = 'Lost';
+        p2imgmod = 'downarrow.png';
+        p2elochange = match[0][0].P2EloChange;
+        p2colormod = 'red';
+    }
+    else {
+        p1altmod = 'Lost';
+        p1imgmod = 'downarrow.png';
+        p1elochange = match[0][0].P1EloChange;
+        p1colormod = 'red';
+        p2altmod = 'Won';
+        p2imgmod = 'uparrow.png';
+        p2elochange = '+' + match[0][0].P2EloChange;
+        p2colormod = 'green';
+    }
+%>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+		<a class="navbar-brand" rel="home" href="http://www.playmorepromode.org" title="Play More Promode">
+                        <img style="max-width:100px; margin-top: -10px;"
+                             src="/images/cpma.png">
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/top100">Top 100</a></li>
+                    <li><a href="/latestmatches">Latest Matches</a></li>
+                    <li><a href="/admin">Admin Control Panel</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h1 style="color: <%= p1colormod %>;text-align:right;">
+                    <img alt="<%= p1altmod %>" src="/images/<%= p1imgmod %>" style="text-align:right;">
+                        <%= p1elochange %>
+                        <a href="/player?PlayerID=<%= match[0][0].P1ID %>"><%= match[0][0].P1Name %></a>
+                    </h1>
+                </div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                    <h1>
+                    	<a href="/player?PlayerID=<%= match[0][0].P2ID %>"><%= match[0][0].P2Name %></a>
+                    	<div style="color: <%= p2colormod %>; display:inline;">
+                        <%= p2elochange %>
+				<img alt="<%= p2altmod %>" src="/images/<%= p2imgmod %>">
+		    	</div>
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h1 style="text-align:center; font-size:16px;">
+                        <%= match[0][0].P1Elo %>
+                    </h1>
+                </div>
+                <div class="col-sm-4">
+                    <h1 style="text-align:center;">vs</h1>
+                </div>
+                <div class="col-sm-4">
+                    <h1 style="text-align:center; font-size:16px;">
+                        <%= match[0][0].P2Elo %>
+                    </h1>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                <h1 style="text-align:center;"><%= match[0][0].P1Score %> - <%= match[0][0].P2Score %></h1>
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                <h1 style="text-align:center;"><%= match[0][0].Map %> <br /><%= match[0][0].Datetime %></h1>
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-hover" style="text-align: left; width: 240px; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">Hits/Shots
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">Accuracy
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;">Kills
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;">Weapon
+                            <br>
+                        </td>
+                        <td style="vertical-align: top;">Kills
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">Accuracy
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">Hits/Shots
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1GKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Gauntlet" src="/images/gauntlet.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2GKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1MGHits %>/<%= match[0][0].P1MGShots %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1MGShots > 0.000.toFixed(3) ? ((match[0][0].P1MGHits/match[0][0].P1MGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1MGKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Machinegun" src="/images/machinegun.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2MGKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2MGShots > 0.000.toFixed(3) ? ((match[0][0].P2MGHits/match[0][0].P2MGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2MGHits %>/<%= match[0][0].P2MGShots %>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1SGHits %>/<%= match[0][0].P1SGShots %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1SGShots > 0.000.toFixed(3) ? ((match[0][0].P1SGHits/match[0][0].P1SGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1SGKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Shotgun" src="/images/shotgun.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2SGKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2SGShots > 0.000.toFixed(3) ? ((match[0][0].P2SGHits/match[0][0].P2SGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2SGHits %>/<%= match[0][0].P2SGShots %>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1RLHits %>/<%= match[0][0].P1RLShots %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1RLShots > 0.000.toFixed(3) ? ((match[0][0].P1RLHits/match[0][0].P1RLShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1RLKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Rocket Launcher" src="/images/rocketlauncher.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2RLKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2RLShots > 0.000.toFixed(3) ? ((match[0][0].P2RLHits/match[0][0].P2RLShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2RLHits %>/<%= match[0][0].P2RLShots %>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1LGHits %>/<%= match[0][0].P1LGShots %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1LGShots > 0.000.toFixed(3) ? ((match[0][0].P1LGHits/match[0][0].P1LGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1LGKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Lightning Gun" src="/images/lightninggun.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2LGKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2LGShots > 0 ? ((match[0][0].P2LGHits/match[0][0].P2LGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2LGHits %>/<%= match[0][0].P2LGShots %>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1RGHits %>/<%= match[0][0].P1RGShots %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1RGShots > 0 ? ((match[0][0].P1RGHits/match[0][0].P1RGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                          <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1RGKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Railgun" src="/images/railgun.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2RGKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2RGShots > 0 ? ((match[0][0].P2RGHits/match[0][0].P2RGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2RGHits %>/<%= match[0][0].P2RGShots %>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1GLHits %>/<%= match[0][0].P1GLShots %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1GLShots > 0 ? ((match[0][0].P1GLHits/match[0][0].P1GLShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1GLKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Grenade Launcher" src="/images/grenadelauncher.png"></td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2GLKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2GLShots > 0 ? ((match[0][0].P2GLHits/match[0][0].P2GLShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2GLHits %>/<%= match[0][0].P2GLShots %>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1PGHits %>/<%= match[0][0].P1PGShots %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1PGShots > 0 ? ((match[0][0].P1PGHits/match[0][0].P1PGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1PGKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Plasma Gun" src="/images/plasmagun.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2PGKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2PGShots > 0 ? ((match[0][0].P2PGHits/match[0][0].P2PGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2PGHits %>/<%= match[0][0].P2PGShots %>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1BFGHits %>/<%= match[0][0].P1BFGHits %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P1BFGShots > 0 ? ((match[0][0].P1BFGHits/match[0][0].P1BFGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1BFGKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="BFG" src="/images/bfg.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2BFGKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2BFGShots > 0 ? ((match[0][0].P2BFGHits/match[0][0].P2BFGShots)*100).toFixed(3) : 0.000.toFixed(3) %>%
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;"><%= match[0][0].P2BFGHits %>/<%= match[0][0].P2BFGShots %>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P1TFKills %>
+                            <br>
+                        </td>
+                        <td style="height: 32px; width: 32px; vertical-align: middle; text-align: center;"><img alt="Teleporter" src="/images/telefrag.png">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 32px;"><%= match[0][0].P2TFKills %>
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; height: 32px; width: 40px;">
+                            <br>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 style="text-align:right;">(<%= match[0][0].P1DamageTaken > 0 ? ((match[0][0].P1DamageGiven/match[0][0].P1DamageTaken)*100).toFixed(3) : 0.000.toFixed(3) %>%) <br /><%= match[0][0].P1DamageGiven %>/<%= match[0][0].P1DamageTaken %></h1>
+            </div>
+            <div class="col-sm-4">
+                <img title="Efficiency" src="/images/efficiency.png" alt="Efficiency" style="display: block; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="col-sm-4">
+                <h1>(<%= match[0][0].P2DamageTaken > 0 ? ((match[0][0].P2DamageGiven/match[0][0].P2DamageTaken)*100).toFixed(3) : 0.000.toFixed(3) %>%) <br /><%= match[0][0].P2DamageGiven %>/<%= match[0][0].P2DamageTaken %></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 style="text-align:right;"><%= match[0][0].P1MHPickups %></h1>
+            </div>
+            <div class="col-sm-4">
+                <img alt="Megahealth " title="Megahealth" alt="Megahealth" src="/images/megahealth.png" style="display: block; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="col-sm-4">
+                <h1><%= match[0][0].P2MHPickups %></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 style="text-align:right;"><%= match[0][0].P1RAPickups %></h1>
+            </div>
+            <div class="col-sm-4">
+                <img alt="Red Armor " title="Red Armor" alt="Red Armor" src="/images/redarmor.png" style="display: block; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="col-sm-4">
+                <h1><%= match[0][0].P2RAPickups %></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 style="text-align:right;"><%= match[0][0].P1YAPickups %></h1>
+            </div>
+            <div class="col-sm-4">
+                <img alt="Yellow Armor " title="Yellow Armor" alt="Yellow Armor" src="/images/yellowarmor.png" style="display: block; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="col-sm-4">
+                <h1><%= match[0][0].P2YAPickups %></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 style="text-align:right;"><%= match[0][0].P1GAPickups %></h1>
+            </div>
+            <div class="col-sm-4">
+                <img alt="Green Armor " title="Green Armor" alt="Green Armor" src="/images/greenarmor.png" style="display: block; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="col-sm-4">
+                <h1><%= match[0][0].P2GAPickups %></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 style="text-align:right;"></h1>
+            </div>
+            <div class="col-sm-4">
+                <h1 style="text-align:center;">Comments</h1>
+            </div>
+            <div class="col-sm-4">
+                <h1></h1>
+            </div>
+        </div>
+        <form><input type="hidden" name="MatchID" id="MatchID" value="<%= match[0][0].MatchID %>" /></form>
+        <% var linebreak="\r\n" %>
+        <% for (var i=0; i<comments[0].length; i++) { %>
+            <div class="row">
+                <div class="col-sm-4">
+                    <textarea disabled style="float:right;resize:none;outline:none;color:#000;" readonly rows="2" cols="40"><%= comments[0][i].Name %><%= linebreak %><%= comments[0][i].Datetime %></textarea>
+                </div>
+                <div class="col-sm-4">
+                    <textarea disabled style="resize:none;outline:none;color:#000;" readonly rows="4" cols="100"><%= comments[0][i].Post %></textarea>
+                </div>
+            </div>
+        <% } %>
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 style="text-align:right;"></h1>
+            </div>
+            <div class="col-sm-4 text-center">
+                <a class="btn btn-info" id="btnCreateComment" role="button">Add Comment</a>
+            </div>
+            <div class="col-sm-4">
+                <h1></h1>
+            </div>
+        </div>
+        <div class="row" id="commentarea" display:none">
+        </div>
+    </div>
+<% include footer %>
+</body>
+</html>

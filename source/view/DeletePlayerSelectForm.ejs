@@ -1,0 +1,9 @@
+<script src="/deleteplayerselectform.js"></script>
+<h1>Select Player</h1>
+Player: <select name="PlayerID" id="PlayerID">
+<% for (var i=0; i<playerlist.length; i++) { %>
+<option value="<%= playerlist[i].PlayerID %>"> <%= playerlist[i].Name %>
+</option>
+<% } %>
+</select>
+<a class="btn btn-info" id="btnDeletePlayerSelectForm" role="button">Delete Player</a>

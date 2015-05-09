@@ -1,0 +1,128 @@
+<% include header %>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+		<a class="navbar-brand" rel="home" href="http://www.playmorepromode.org" title="Play More Promode">
+		        <img style="max-width:100px; margin-top: -10px;"
+		             src="/images/cpma.png">
+		</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/top100">Top 100</a></li>
+                    <li><a href="/latestmatches">Latest Matches</a></li>
+                    <li><a href="/admin">Admin Control Panel</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <h1>Top 10</h1>
+            <table class="table table-hover" style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: top; font-weight: bold;">Name
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">Rank
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">Win %
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">Games Played
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">Games Won
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">Games Lost
+                            <br>
+                        </td>
+                    </tr>
+                    <% for (var i=0; i<top.length; i++) { %>
+                        <tr>
+                            <td style="vertical-align: top;"><a href="/player?PlayerID=<%= top[i].PlayerID %>"><%= top[i].Name %></a><br></td>
+                            <td style="vertical-align: top;"><%= top[i].Elo %><br></td>
+                            <td style="vertical-align: top;"><%= top[i].GamesLost == 0 ? 1.000.toFixed(3) : (top[i].GamesWon/(top[i].GamesWon+top[i].GamesLost)).toFixed(3) %><br></td>
+                            <td style="vertical-align: top;"><%= top[i].GamesPlayed %><br></td>
+                            <td style="vertical-align: top;"><%= top[i].GamesWon %><br></td>
+                            <td style="vertical-align: top;"><%= top[i].GamesLost %><br></td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <h1>Latest Matches</h1>
+            <table class="table table-hover" style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: top; font-weight: bold;">Winner
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">P1 Score
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">P2 Score
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">Loser
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">Map
+                            <br>
+                        </td>
+                        <td style="vertical-align: top; font-weight: bold;">Date
+                            <br>
+                        </td>
+                    </tr>
+                    <% for (var i=0; i<latest.length; i++) {
+                            var winnerid;
+                            var winnername;
+                            var winnerscore;
+                            var loserid
+                            var losername
+                            var loserscore
+                            if (latest[i].P1Score > latest[i].P2Score) {
+                                winnerid = latest[i].P1ID;
+                                winnername = latest[i].P1Name;
+                                winnerscore = latest[i].P1Score;
+                                loserid = latest[i].P2ID;
+                                losername = latest[i].P2Name;
+                                loserscore = latest[i].P2Score;
+                            }
+                            else {
+                                winnerid = latest[i].P2ID;
+                                winnername = latest[i].P2Name;
+                                winnerscore = latest[i].P2Score;
+                                loserid = latest[i].P1ID;
+                                losername = latest[i].P1Name;
+                                loserscore = latest[i].P1Score;
+                            } %>
+                        <tr>
+                            <td style="vertical-align: top;"><a href="/player?PlayerID=<%= winnerid %>"><%= winnername %></a><br></td>
+                            <td style="vertical-align: top;"><%= winnerscore %><br></td>
+                            <td style="vertical-align: top;"><%= loserscore %><br></td>
+                            <td style="vertical-align: top;"><a href="/player?PlayerID=<%= loserid %>"><%= losername %></a><br></td>
+                            <td style="vertical-align: top;"><%= latest[i].Map %><br></td>
+                            <td style="vertical-align: top;"><a href="/match?MatchID=<%= latest[i].MatchID %>"><%= latest[i].Datetime %></a><br></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<% include footer %>
+</body>
+</html>

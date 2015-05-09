@@ -1,0 +1,9 @@
+<% var linebreak="\r\n" %>
+<div class="row">
+    <div class="col-sm-4">
+    <textarea disabled style="float:right;resize:none;outline:none;color:#000;" readonly rows="2" cols="40"><%= comment[0][0].Name %><%= linebreak %><%= comment[0][0].Datetime %></textarea>
+    </div>
+    <div class="col-sm-4">
+        <textarea disabled style="resize:none;outline:none;color:#000;" readonly rows="4" cols="100"><%= comment[0][0].Post %></textarea>
+    </div>
+</div>

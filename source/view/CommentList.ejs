@@ -1,0 +1,25 @@
+<script src="/deletecomment.js"></script>
+<h1>Match Comments</h1>
+<form><input type="hidden" name="MatchID" id="MatchID" value="<%= MatchID %>" /></form>
+<div class="container">
+    <div class="row" id="output2" style="margin:10px; display:none">
+    </div>
+</div>
+<% var linebreak="\r\n" %>
+<% for (var i=0; i<comments[0].length; i++) { %>
+    <div class="container" id="<%= i %>">
+        <div class="row">
+            <div class="col-sm-4">
+                <textarea disabled style="float:right;resize:none;outline:none;color:#000;" readonly rows="2" cols="40"><%= comments[0][i].Name %><%= linebreak %><%= comments[0][i].Datetime %></textarea>
+                <form><input type="hidden" name="Datetime<%= i %>" id="Datetime<%= i %>" value="<%= comments[0][i].Datetime %>" /></form>
+                <form><input type="hidden" name="Name<%= i %>" id="Name<%= i %>" value="<%= comments[0][i].Name %>" /></form>
+            </div>
+            <div class="col-sm-4">
+                <textarea disabled style="resize:none;outline:none;color:#000;" readonly rows="4" cols="60"><%= comments[0][i].Post %></textarea>
+            </div>
+            <div class="col-sm-4">
+                <a class="btn btn-warning" id="btnDeleteComment<%= i %>" value="<%= i%>" role="button">Delete Comment</a>
+            </div>
+        </div>
+    </div>
+<% } %>

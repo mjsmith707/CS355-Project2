@@ -1,0 +1,134 @@
+<script src="/creatematchform.js"></script>
+                <h1>Select Players</h1>
+                    <form>
+                    Player1: <select name="P1ID" id="P1Name">
+                <% for (var i=0; i<playerlist.length; i++) { %>
+                    <option value="<%= playerlist[i].Name %>">
+                    <%= playerlist[i].Name %>
+                    </option>
+                <% } %>
+                </select><br>
+                Player2: <select name="P2ID" id="P2Name">
+                <% for (var i=0; i<playerlist.length; i++) { %>
+                    <option value="<%= playerlist[i].Name %>">
+                    <%= playerlist[i].Name %>
+                    </option>
+                <% } %>
+                </select><br>
+                <h1>Match Information</h1>
+                Date: 	<input type="text" name="Datetime" id="Datetime" value="0" /><br />
+                Map: 	<input type="text" name="Map" id="Map" value="0" /><br />
+                <h1>Player 1 Information</h1>
+                Score: 	<input type="text" name="Score1" id="Score1" value="0" /><br />
+                Kills: 	<input type="text" name="Kills1" id="Kills1" value="0" /><br />
+                Deaths: 	<input type="text" name="Deaths1" id="Deaths1" value="0" /><br />
+                Suicides: 	<input type="text" name="Suicides1" id="Suicides1" value="0" /><br />
+                Net: 	<input type="text" name="Net1" id="Net1" value="0" /><br />
+                DamageGiven: 	<input type="text" name="DamageGiven1" id="DamageGiven1" value="0" /><br />
+                DamageTaken: 	<input type="text" name="DamageTaken1" id="DamageTaken1" value="0" /><br />
+                Captures: 	<input type="text" name="Captures1" id="Captures1" value="0" /><br />
+                Assists: 	<input type="text" name="Assists1" id="Assists1" value="0" /><br />
+                Defense: 	<input type="text" name="Defense1" id="Defense1" value="0" /><br />
+                Returns: 	<input type="text" name="Returns1" id="Returns1" value="0" /><br />
+                HealthTotal: 	<input type="text" name="HealthTotal1" id="HealthTotal1" value="0" /><br />
+                ArmorTotal: 	<input type="text" name="ArmorTotal1" id="ArmorTotal1" value="0" /><br />
+                MHPickups: 	<input type="text" name="MHPickups1" id="MHPickups1" value="0" /><br />
+                RAPickups: 	<input type="text" name="RAPickups1" id="RAPickups1" value="0" /><br />
+                YAPickups: 	<input type="text" name="YAPickups1" id="YAPickups1" value="0" /><br />
+                GAPickups: 	<input type="text" name="GAPickups1" id="GAPickups1" value="0" /><br />
+                QuadPickups: 	<input type="text" name="QuadPickups1" id="QuadPickups1" value="0" /><br />
+                BSPickups: 	<input type="text" name="BSPickups1" id="BSPickups1" value="0" /><br />
+                InvisPickups: 	<input type="text" name="InvisPickups1" id="InvisPickups1" value="0" /><br />
+                FlightPickups: 	<input type="text" name="FlightPickups1" id="FlightPickups1" value="0" /><br />
+                RegenPickups: 	<input type="text" name="RegenPickups1" id="RegenPickups1" value="0" /><br />
+                FlagGrabs: 	<input type="text" name="FlagGrabs1" id="FlagGrabs1" value="0" /><br />
+                QuadTime: 	<input type="text" name="QuadTime1" id="QuadTime1" value="0" /><br />
+                BSTime: 	<input type="text" name="BSTime1" id="BSTime1" value="0" /><br />
+                InvisTime: 	<input type="text" name="InvisTime1" id="InvisTime1" value="0" /><br />
+                FlightTime: 	<input type="text" name="FlightTime1" id="FlightTime1" value="0" /><br />
+                RegenTime: 	<input type="text" name="RegenTime1" id="RegenTime1" value="0" /><br />
+                FlagTime: 	<input type="text" name="FlagTime1" id="FlagTime1" value="0" /><br />
+                GKills: 	<input type="text" name="GKills1" id="GKills1" value="0" /><br />
+                MGKills: 	<input type="text" name="MGKills1" id="MGKills1" value="0" /><br />
+                MGShots: 	<input type="text" name="MGShots1" id="MGShots1" value="0" /><br />
+                MGHits: 	<input type="text" name="MGHits1" id="MGHits1" value="0" /><br />
+                SGKills: 	<input type="text" name="SGKills1" id="SGKills1" value="0" /><br />
+                SGShots: 	<input type="text" name="SGShots1" id="SGShots1" value="0" /><br />
+                SGHits: 	<input type="text" name="SGHits1" id="SGHits1" value="0" /><br />
+                PGKills: 	<input type="text" name="PGKills1" id="PGKills1" value="0" /><br />
+                PGShots: 	<input type="text" name="PGShots1" id="PGShots1" value="0" /><br />
+                PGHits: 	<input type="text" name="PGHits1" id="PGHits1" value="0" /><br />
+                RLKills: 	<input type="text" name="RLKills1" id="RLKills1" value="0" /><br />
+                RLShots: 	<input type="text" name="RLShots1" id="RLShots1" value="0" /><br />
+                RLHits: 	<input type="text" name="RLHits1" id="RLHits1" value="0" /><br />
+                LGKills: 	<input type="text" name="LGKills1" id="LGKills1" value="0" /><br />
+                LGShots: 	<input type="text" name="LGShots1" id="LGShots1" value="0" /><br />
+                LGHits: 	<input type="text" name="LGHits1" id="LGHits1" value="0" /><br />
+                RGKills: 	<input type="text" name="RGKills1" id="RGKills1" value="0" /><br />
+                RGShots: 	<input type="text" name="RGShots1" id="RGShots1" value="0" /><br />
+                RGHits: 	<input type="text" name="RGHits1" id="RGHits1" value="0" /><br />
+                BFGKills: 	<input type="text" name="BFGKills1" id="BFGKills1" value="0" /><br />
+                BFGShots: 	<input type="text" name="BFGShots1" id="BFGShots1" value="0" /><br />
+                BFGHits: 	<input type="text" name="BFGHits1" id="BFGHits1" value="0" /><br />
+                GLKills: 	<input type="text" name="GLKills1" id="GLKills1" value="0" /><br />
+                GLShots: 	<input type="text" name="GLShots1" id="GLShots1" value="0" /><br />
+                GLHits: 	<input type="text" name="GLHits1" id="GLHits1" value="0" /><br />
+                TFKills: 	<input type="text" name="TFKills1" id="TFKills1" value="0" /><br />
+                <h1>Player 2 Information</h1>
+                Score: 	<input type="text" name="Score2" id="Score2" value="0" /><br />
+                Kills: 	<input type="text" name="Kills2" id="Kills2" value="0" /><br />
+                Deaths: 	<input type="text" name="Deaths2" id="Deaths2" value="0" /><br />
+                Suicides: 	<input type="text" name="Suicides2" id="Suicides2" value="0" /><br />
+                Net: 	<input type="text" name="Net2" id="Net2" value="0" /><br />
+                DamageGiven: 	<input type="text" name="DamageGiven2" id="DamageGiven2" value="0" /><br />
+                DamageTaken: 	<input type="text" name="DamageTaken2" id="DamageTaken2" value="0" /><br />
+                Captures: 	<input type="text" name="Captures2" id="Captures2" value="0" /><br />
+                Assists: 	<input type="text" name="Assists2" id="Assists2" value="0" /><br />
+                Defense: 	<input type="text" name="Defense2" id="Defense2" value="0" /><br />
+                Returns: 	<input type="text" name="Returns2" id="Returns2" value="0" /><br />
+                HealthTotal: 	<input type="text" name="HealthTotal2" id="HealthTotal2" value="0" /><br />
+                ArmorTotal: 	<input type="text" name="ArmorTotal2" id="ArmorTotal2" value="0" /><br />
+                MHPickups: 	<input type="text" name="MHPickups2" id="MHPickups2" value="0" /><br />
+                RAPickups: 	<input type="text" name="RAPickups2" id="RAPickups2" value="0" /><br />
+                YAPickups: 	<input type="text" name="YAPickups2" id="YAPickups2" value="0" /><br />
+                GAPickups: 	<input type="text" name="GAPickups2" id="GAPickups2" value="0" /><br />
+                QuadPickups: 	<input type="text" name="QuadPickups2" id="QuadPickups2" value="0" /><br />
+                BSPickups: 	<input type="text" name="BSPickups2" id="BSPickups2" value="0" /><br />
+                InvisPickups: 	<input type="text" name="InvisPickups2" id="InvisPickups2" value="0" /><br />
+                FlightPickups: 	<input type="text" name="FlightPickups2" id="FlightPickups2" value="0" /><br />
+                RegenPickups: 	<input type="text" name="RegenPickups2" id="RegenPickups2" value="0" /><br />
+                FlagGrabs: 	<input type="text" name="FlagGrabs2" id="FlagGrabs2" value="0" /><br />
+                QuadTime: 	<input type="text" name="QuadTime2" id="QuadTime2" value="0" /><br />
+                BSTime: 	<input type="text" name="BSTime2" id="BSTime2" value="0" /><br />
+                InvisTime: 	<input type="text" name="InvisTime2" id="InvisTime2" value="0" /><br />
+                FlightTime: 	<input type="text" name="FlightTime2" id="FlightTime2" value="0" /><br />
+                RegenTime: 	<input type="text" name="RegenTime2" id="RegenTime2" value="0" /><br />
+                FlagTime: 	<input type="text" name="FlagTime2" id="FlagTime2" value="0" /><br />
+                GKills: 	<input type="text" name="GKills2" id="GKills2" value="0" /><br />
+                MGKills: 	<input type="text" name="MGKills2" id="MGKills2" value="0" /><br />
+                MGShots: 	<input type="text" name="MGShots2" id="MGShots2" value="0" /><br />
+                MGHits: 	<input type="text" name="MGHits2" id="MGHits2" value="0" /><br />
+                SGKills: 	<input type="text" name="SGKills2" id="SGKills2" value="0" /><br />
+                SGShots: 	<input type="text" name="SGShots2" id="SGShots2" value="0" /><br />
+                SGHits: 	<input type="text" name="SGHits2" id="SGHits2" value="0" /><br />
+                PGKills: 	<input type="text" name="PGKills2" id="PGKills2" value="0" /><br />
+                PGShots: 	<input type="text" name="PGShots2" id="PGShots2" value="0" /><br />
+                PGHits: 	<input type="text" name="PGHits2" id="PGHits2" value="0" /><br />
+                RLKills: 	<input type="text" name="RLKills2" id="RLKills2" value="0" /><br />
+                RLShots: 	<input type="text" name="RLShots2" id="RLShots2" value="0" /><br />
+                RLHits: 	<input type="text" name="RLHits2" id="RLHits2" value="0" /><br />
+                LGKills: 	<input type="text" name="LGKills2" id="LGKills2" value="0" /><br />
+                LGShots: 	<input type="text" name="LGShots2" id="LGShots2" value="0" /><br />
+                LGHits: 	<input type="text" name="LGHits2" id="LGHits2" value="0" /><br />
+                RGKills: 	<input type="text" name="RGKills2" id="RGKills2" value="0" /><br />
+                RGShots: 	<input type="text" name="RGShots2" id="RGShots2" value="0" /><br />
+                RGHits: 	<input type="text" name="RGHits2" id="RGHits2" value="0" /><br />
+                BFGKills: 	<input type="text" name="BFGKills2" id="BFGKills2" value="0" /><br />
+                BFGShots: 	<input type="text" name="BFGShots2" id="BFGShots2" value="0" /><br />
+                BFGHits: 	<input type="text" name="BFGHits2" id="BFGHits2" value="0" /><br />
+                GLKills: 	<input type="text" name="GLKills2" id="GLKills2" value="0" /><br />
+                GLShots: 	<input type="text" name="GLShots2" id="GLShots2" value="0" /><br />
+                GLHits: 	<input type="text" name="GLHits2" id="GLHits2" value="0" /><br />
+                TFKills: 	<input type="text" name="TFKills2" id="TFKills2" value="0" /><br />
+                <a class="btn btn-info" id="btnCreateMatchForm" role="button">Create Match</a>
+                </form>

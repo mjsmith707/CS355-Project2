@@ -1,0 +1,9 @@
+<script src="/deletecommentselectform.js"></script>
+<h1>Select Match</h1>
+Match: <select name="MatchID" id="MatchID">
+<% for (var i=0; i<matchlist.length; i++) { %>
+<option value="<%= matchlist[i].MatchID %>"> <%= matchlist[i].P1Name %> vs <%= matchlist[i].P2Name %> on <%= matchlist[i].Map %> <%= matchlist[i].Datetime %>
+</option>
+<% } %>
+</select>
+<a class="btn btn-info" id="btnDeleteCommentSelectForm" role="button">Select Match</a>

@@ -1,0 +1,9 @@
+<script src="/editplayerform.js"></script>
+<h1>Player Information</h1>
+<form>
+Name: 	<input type="text" name="Name" id="Name" value="<%= player[0][0].Name %>" /><br />
+FirstSeen: 	<input type="text" name="FirstSeen" id="FirstSeen" value="<%= player[0][0].FirstSeen %>" /><br />
+LastSeen: <input type="text" name="LastSeen" id="LastSeen" value="<%= player[0][0].LastSeen %>" /><br />
+<input type="hidden" name="PlayerID" id="PlayerID" value="<%= player[0][0].PlayerID %>" />
+<a class="btn btn-info" id="btnEditPlayerForm" role="button">Edit Player</a>
+</form>
